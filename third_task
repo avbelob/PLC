@@ -1,0 +1,44 @@
+VARS
+input_n "Введите n:"
+result "Результат:"
+FUNC
+FBEGIN fibonacci
+MOVVAL r2 0
+JUMPZ r1 exit
+SUB r1 r5
+JUMPZ r1 break_condition
+PUSH r1
+PUSH r3
+PUSH r4
+CALL fibonacci
+POP r4
+POP r3
+POP r1
+MOV r3 r2
+SUB r1 r5
+PUSH r1
+PUSH r3
+PUSH r4
+CALL fibonacci
+POP r4
+POP r3
+POP r1
+MOV r4 r2
+ADD r3 r4
+MOV r2 r3
+JUMP exit
+break_condition
+MOVVAL r2 1
+JUMP exit
+exit
+FEND
+START
+PRINTSTR input_n
+READ r1
+MOVVAL r5 1
+SUB r1 r5
+PUSH r1
+CALL fibonacci
+PRINTSTR result
+PRINT r2
+STOP

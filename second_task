@@ -1,0 +1,26 @@
+VARS
+input_n "Введите n:"
+result "Результат:"
+START
+PRINTSTR input_n
+READ r1
+MOVVAL r2 0
+MOVVAL r3 1
+SUB r1 r3
+JUMPZ r1 end
+MOVVAL r2 1
+SUB r1 r3
+JUMPZ r1 end
+MOVVAL r3 0
+MOVVAL r4 1
+loop
+MOV r5 r2
+ADD r2 r3
+MOV r3 r5
+SUB r1 r4
+JUMPZ r1 end
+JUMP loop
+end
+PRINTSTR result
+PRINT r2
+STOP
